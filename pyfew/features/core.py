@@ -3,7 +3,6 @@ import numpy as np
 import scipy.stats as stats
 import scipy.signal as signal
 import yaml
-import os
 import pkg_resources
 
 
@@ -35,6 +34,7 @@ def dist_features(v, feats):
     feats['q25'] = np.quantile(v, .25)
     feats['q75'] = np.quantile(v, .75)
     return feats
+
 
 ######################################################################
 #
@@ -104,16 +104,6 @@ def catch22_feats(v, feats):
 
 ######################################################################
 #
-#                       Full features (TODO)
-#
-######################################################################
-
-
-
-
-
-######################################################################
-#
 #                           Main
 #
 ######################################################################
@@ -122,9 +112,7 @@ def load_feature_set(feature_set):
     if feature_set not in feature_names:
         raise Exception("Feature name [%s] not available." % feature_set)
 
-    feature_set_root = "feature_set"
-    feature_set_path = pkg_resources.resource_filename('pyfew', 'features/feature_set/'+ feature_set +'.yaml')
-    #feature_set_path = os.path.join(feature_set_root, feature_set+'.yaml')
+    feature_set_path = pkg_resources.resource_filename('pyfew', 'features/feature_set/' + feature_set + '.yaml')
     with open(feature_set_path) as file:
         feature_set = yaml.load(file, yaml.FullLoader)
     return feature_set

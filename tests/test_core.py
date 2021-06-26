@@ -56,4 +56,3 @@ def test_features():
     feats = core.extract_features(my_data, sample_rate=sample_rate)
     np.save('data/feats.npy', feats)
     assert len(feats) == 27
-

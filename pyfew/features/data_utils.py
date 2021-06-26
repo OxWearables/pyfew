@@ -131,14 +131,31 @@ def load_data(data, window_length, sample_rate=30, window_overlap=0,
     return data, my_times
 
 
+def sample_featureI(xyz, feats, feats_name='cf1'):
+    feats[feats_name] = np.max(xyz, axis=0)
+    return feats
+
+
+def sample_featureII(xyz, feats, feats_name='cf2'):
+    feats[feats_name] = np.min(xyz, axis=0)
+    return feats
+
+
+def sample_featureIII(xyz, feats, feats_name='cf3'):
+    feats[feats_name] = np.median(xyz, axis=0)
+    return feats
+
+
 def main():
-    data_path = '/Users/hangy/Dphil/code/pyfew/mini_data.csv'
+    data_path = '/Users/hangy/Dphil/code/pyfew/data/mini_data.csv'
     sample_rate = 50
     window_length = 30
     window_overlap = 15
     data, my_times = load_data(data_path, window_length, sample_rate=sample_rate, window_overlap=window_overlap)
 
-    feats = [extract_features(epoch, sample_rate=sample_rate) for epoch in data]
+    custom_features = [sample_featureI, sample_featureII, sample_featureIII]
+
+    feats = [extract_features(epoch, sample_rate=sample_rate, custom_features=custom_features) for epoch in data]
     feats = pd.DataFrame(feats)
     print(feats.columns)
     print(feats.head())

@@ -10,11 +10,13 @@ We also include several models for different detection tasks to illustrate how t
 Github actions:
 flake8 style check
 
-# Dependencies
+### Dependencies
 
 * Catch22
 * Numpy
 * Scipy
+* Yaml
+
 
 ### Installation in Python
 ```bash
@@ -42,4 +44,26 @@ feats = pd.DataFrame(feats)
 print(feats.head())
 ```
 
-#### Detection
+#### Custom features
+If you would like to add your custom features, you can define the feature extraction functions and add them to the
+current set of features easily like this:
+```python
+def sample_featureI(xyz, feats, feats_name='cf1'):
+    feats[feats_name] = np.max(xyz, axis=0)
+    return feats
+
+
+def sample_featureII(xyz, feats, feats_name='cf2'):
+    feats[feats_name] = np.min(xyz, axis=0)
+    return feats
+
+custom_features = [sample_featureI, sample_featureII]
+feats = [extract_features(epoch, sample_rate=sample_rate, 
+                          custom_features=custom_features) for epoch in data]
+```
+#### Feature set
+You can also specify the set of features that you wanna use by specifying the `feature_set` argument. At the moment we 
+support `minimal`, `default` and `full`. More sets will be included in the future.
+
+
+### Detection

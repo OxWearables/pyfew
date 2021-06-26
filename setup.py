@@ -16,7 +16,9 @@ setup(
     license='MIT',
     author='wearables@ox',
     packages=['pyfew'],
+    include_package_data=True,
     install_requires=[
+        'pyyaml',
         'catch22',
         'numpy',
         'scipy'

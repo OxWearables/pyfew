@@ -17,8 +17,12 @@ flake8 style check
 * Scipy
 * Yaml
 
+### Install from pip
+```bash
+pip install pyfew
+```
 
-### Installation in Python
+### Installation for Development
 ```bash
 git clone git@github.com:activityMonitoring/pyfew.git
 cd pywear
@@ -37,11 +41,11 @@ import pandas as pd
 sample_rate = 50
 window_length = 30
 window_overlap = 15
-data, my_times = load_data('mini_data.csv', window_length, sample_rate=sample_rate, window_overlap=window_overlap)
-
-feats = [extract_features(epoch, sample_rate=sample_rate) for epoch in data]
-feats = pd.DataFrame(feats)
-print(feats.head())
+data, my_times = load_data('/mini_data.csv',
+                           window_length, 
+                           sample_rate=sample_rate, 
+                           window_overlap=window_overlap)
+feats = extract_features(data, feature_set='full', sample_rate=sample_rate)
 ```
 
 #### Custom features
@@ -58,12 +62,11 @@ def sample_featureII(xyz, feats, feats_name='cf2'):
     return feats
 
 custom_features = [sample_featureI, sample_featureII]
-feats = [extract_features(epoch, sample_rate=sample_rate, 
-                          custom_features=custom_features) for epoch in data]
+feats = extract_features(data, custom_features=custom_features, feature_set='full', sample_rate=sample_rate)
 ```
+
 #### Feature set
 You can also specify the set of features that you wanna use by specifying the `feature_set` argument. At the moment we 
 support `minimal`, `default` and `full`. More sets will be included in the future.
 
 
-### Detection

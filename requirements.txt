@@ -1,4 +1,3 @@
-accelerometer @ file:///Users/hangy/myforks/biobankAccelerometerAnalysis
 alabaster==0.7.12
 attrs==21.2.0
 Babel==2.9.0
@@ -6,11 +5,11 @@ backports.entry-points-selectable==1.1.1
 brotlipy==0.7.0
 catch22==0.2.0
 certifi==2021.5.30
-cffi @ file:///opt/concourse/worker/volumes/live/ca3c0fea-9d0f-4489-6889-89b42078ed37/volume/cffi_1613246931142/work
+cffi==1.14.5
 cfgv==3.3.1
 chardet==4.0.0
-colorama @ file:///tmp/build/80754af9/colorama_1607707115595/work
-cryptography @ file:///opt/concourse/worker/volumes/live/cdf8ff17-b0bf-4081-524c-b5a0afe929ba/volume/cryptography_1616769280208/work
+colorama==0.4.4
+cryptography==3.4.7
 cycler==0.10.0
 distlib==0.3.3
 docutils==0.16
@@ -33,18 +32,19 @@ packaging==20.9
 pandas==1.2.4
 patsy==0.5.1
 Pillow==8.2.0
+pip==21.1.2
 platformdirs==2.4.0
 pluggy==0.13.1
 pre-commit==2.15.0
 py==1.10.0
 pycodestyle==2.7.0
-pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
+pycparser==2.20
 pyfew==0.0.1
 pyflakes==2.3.1
 Pygments==2.8.1
-pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1608057966937/work
+pyOpenSSL==20.0.1
 pyparsing==2.4.7
-PySocks @ file:///opt/concourse/worker/volumes/live/ef943889-94fc-4539-798d-461c60b77804/volume/pysocks_1605305801690/work
+PySocks==1.7.1
 pytest==6.2.4
 pytest-datafiles==2.0
 python-dateutil==2.8.1
@@ -53,6 +53,7 @@ PyYAML==5.4.1
 requests==2.25.1
 scikit-learn==0.22
 scipy==1.6.3
+setuptools==52.0.0.post20210125
 six==1.15.0
 snowballstemmer==2.1.0
 Sphinx==3.5.4
@@ -68,4 +69,5 @@ toml==0.10.2
 typing-extensions==3.10.0.0
 urllib3==1.26.4
 virtualenv==20.10.0
+wheel==0.36.2
 zipp==3.4.1

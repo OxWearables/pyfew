@@ -173,7 +173,7 @@ def sample_featureIII(xyz, feats, feats_name="cf3"):
 
 
 def main():
-    data_path = "/Users/hangy/Dphil/code/pyfew/data/mini_data.csv"
+    data_path = "/tests/data/mini_data.csv"
     sample_rate = 50
     window_length = 30
     window_overlap = 15

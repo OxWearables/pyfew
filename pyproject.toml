@@ -22,3 +22,7 @@ exclude = '''
   | tests
 )/
 '''
+
+[tool.pytest.ini_options]
+markers = ["datafiles: load datafiles"]
+

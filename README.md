@@ -1,14 +1,11 @@
+[![Actions Status](https://github.com/activityMonitoring/pyfew/workflows/Pylint/badge.svg)](https://github.com/activityMonitoring/SleepNet/actions)
+[![Actions Status](https://github.com/activityMonitoring/pyfew/workflows/build/badge.svg)](https://github.com/activityMonitoring/SleepNet/actions)
+
 # Pyfew
 A simple and light-weight Feature Extractor for Wearable accelerometer data. 
 It is designed to quickly extract a rich set of well-selected spatial and frequency domain features
 for tri-axial accelerometer. The extracted features can be easily incorporated in machine learning models. 
 We also include several models for different detection tasks to illustrate how the extracted features can be used.
-
-* Test icon (TODO)
-* PyPI upload (TODO)
-
-Github actions:
-flake8 style check
 
 ### Dependencies
 

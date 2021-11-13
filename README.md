@@ -26,14 +26,27 @@ cd pywear
 pip install .
 ```
 
-
 ### Examples 
 
 #### Feature extraction
+The csv data format should be like the following. 
+```bash
+                     time         x         y         z     T
+0 2014-05-07 13:29:51.000  0.351895 -0.444269  0.922479  20.0
+1 2014-05-07 13:29:51.020  0.287764 -0.402277  0.813471  20.0
+2 2014-05-07 13:29:51.040  0.330980 -0.313290  0.862041  20.0
+3 2014-05-07 13:29:51.060  0.428043 -0.325817  0.866287  20.0
+4 2014-05-07 13:29:51.080  0.374533 -0.374217  0.859578  20.0
+```
+
+The table is a sample output of [actipy](https://github.com/activityMonitoring/actipy). Actipy allows one to parse any
+compressed wearable data such as Gt3X and AX3 into a usable format. If you want to directly extract the features, 
+data is a npy file of shape: `N x m x 3`. N is the number of samples. `M = epoch_len (sec) x sample_rate`, then the generated
+output will be of shape `N x num_feats`.
+
 ```python
 from pyfew.features.data_utils import load_data
 from pyfew.features.core import extract_features
-import pandas as pd
 
 sample_rate = 50
 window_length = 30

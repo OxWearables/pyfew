@@ -4,6 +4,7 @@ import numpy as np
 import os
 from pyfew.features.data_utils import load_data
 from pyfew.features.core import extract_features
+from pyfew.features.data_utils import channel_last2first
 
 
 FIXTURE_DIR = os.path.join(
@@ -84,6 +85,25 @@ def test_feature_all(datafiles):
         data_path, window_length, sample_rate=sample_rate, window_overlap=window_overlap
     )
     feats = extract_features(data, feature_set="full", sample_rate=sample_rate)
+
+    assert len(feats.columns) == 65
+
+
+@pytest.mark.datafiles(os.path.join(FIXTURE_DIR, "mini_data.csv"))
+def test_feature_all_channel_first(datafiles):
+    data_path = str(datafiles.listdir()[0])
+    sample_rate = 50
+    window_length = 30
+    window_overlap = 15
+
+    data, my_times = load_data(
+        data_path, window_length, sample_rate=sample_rate, window_overlap=window_overlap
+    )
+    print(data.shape)
+    data = channel_last2first(data, sample_rate=sample_rate, epoch_len=window_length)
+    feats = extract_features(
+        data, feature_set="full", sample_rate=sample_rate, is_channel_last=False
+    )
 
     assert len(feats.columns) == 65
 

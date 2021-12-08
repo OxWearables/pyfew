@@ -62,6 +62,22 @@ def process_overlap(
     return data, my_times
 
 
+def channel_last2first(data, sample_rate, epoch_len):
+    # convert data from N x F x 3 to N x 3 x F
+    sample_per_epoch = sample_rate * epoch_len
+
+    x = data[:, :, 0]
+    y = data[:, :, 0]
+    z = data[:, :, 0]
+
+    x = x.reshape(-1, 1, sample_per_epoch)
+    y = y.reshape(-1, 1, sample_per_epoch)
+    z = z.reshape(-1, 1, sample_per_epoch)
+
+    channel_last_data = np.concatenate((x, y, z), axis=1)
+    return channel_last_data
+
+
 def load_data(
     data,
     window_length,

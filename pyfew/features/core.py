@@ -6,6 +6,7 @@ import yaml
 import pkg_resources
 import pandas as pd
 from pyfew.features.sleep_feats import get_all_sleep_feats
+from tqdm import tqdm
 
 """
 .. module:: features
@@ -154,7 +155,22 @@ def peak_features(v, sample_rate, feats):
     return feats
 
 
-def extract_features(xyz, sample_rate, feature_set="default", custom_features=None):
+def chanfirst2chanlast(my_data):
+    x = my_data[:, 0, :]
+    y = my_data[:, 1, :]
+    z = my_data[:, 2, :]
+
+    x = x.reshape(len(x), -1, 1)
+    y = y.reshape(len(y), -1, 1)
+    z = z.reshape(len(z), -1, 1)
+
+    final_data = np.concatenate((x, y, z), axis=2)
+    return final_data
+
+
+def extract_features(
+    xyz, sample_rate, feature_set="default", is_channel_last=True, custom_features=None
+):
     """Extract hand-crafted features from an array of tri-axial data
 
     :param np.array xyz:
@@ -165,11 +181,16 @@ def extract_features(xyz, sample_rate, feature_set="default", custom_features=No
         Specify where set of features to use. Options include minimal, full default and full
     :para list custom_features:
         List of custom feature extraction fns.
+    :para boolean is_channel_last:
+        Whether the last dim is channel
     :return:
         Extracted features for an epoch
     :rtype:
         np.array
     """
+    if is_channel_last is False:
+        xyz = chanfirst2chanlast(xyz)
+
     feats = [
         extract_epoch_features(
             epoch,
@@ -177,7 +198,7 @@ def extract_features(xyz, sample_rate, feature_set="default", custom_features=No
             feature_set=feature_set,
             custom_features=custom_features,
         )
-        for epoch in xyz
+        for epoch in tqdm(xyz)
     ]
     feats = pd.DataFrame(feats)
 

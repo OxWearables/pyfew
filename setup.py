@@ -18,5 +18,5 @@ setup(
     author_email="angerhangy@gmail.com",
     packages=["pyfew"],
     include_package_data=True,
-    install_requires=["pyyaml", "catch22", "numpy", "scipy"],
+    install_requires=["pyyaml", "catch22", "numpy", "scipy", "tqdm"],
 )

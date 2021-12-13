@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 import time
-from pyfew.features.core import extract_features
+import pyfew.features.core as feature_core
 
 
 def get_ideal_times(times, ideal_times_stamps):
@@ -200,7 +200,7 @@ def main():
     custom_features = [sample_featureI, sample_featureII, sample_featureIII]
 
     feats = [
-        extract_features(
+        feature_core.extract_features(
             epoch, sample_rate=sample_rate, custom_features=custom_features
         )
         for epoch in data

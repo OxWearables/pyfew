@@ -5,8 +5,8 @@ import scipy.signal as signal
 import yaml
 import pkg_resources
 import pandas as pd
-from pyfew.features.sleep_feats import get_all_sleep_feats
 from tqdm import tqdm
+import pyfew.features.sleep_feats as sf
 
 """
 .. module:: features
@@ -205,7 +205,7 @@ def extract_features(
     feature_flags = load_feature_set(feature_set)
     if feature_flags["sleep_features"]:
         assert xyz.shape[1] / sample_rate == 30  # only supports 30-sec epoch for sleep
-        sleep_feats = get_all_sleep_feats(xyz, sample_rate=sample_rate)
+        sleep_feats = sf.get_all_sleep_feats(xyz, sample_rate=sample_rate)
         feats = pd.merge(
             left=feats,
             left_index=True,

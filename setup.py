@@ -12,7 +12,7 @@ with open("requirements.txt", "r") as f:
 
 setup(
     name="pyfew",
-    version="0.0.3",
+    version="0.0.4",
     license="MIT",
     author="wearables@ox",
     author_email="angerhangy@gmail.com",

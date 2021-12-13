@@ -2,9 +2,8 @@ import pytest
 import pyfew.features.core as core
 import numpy as np
 import os
-from pyfew.features.data_utils import load_data
+from pyfew.features.data_utils import load_data, channel_last2first
 from pyfew.features.core import extract_features
-from pyfew.features.data_utils import channel_last2first
 
 
 FIXTURE_DIR = os.path.join(

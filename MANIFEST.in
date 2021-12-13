@@ -2,3 +2,4 @@ recursive-include pyfew *.yaml *.py
 README.md
 setup.py
 LICENSE
+include requirements.txt

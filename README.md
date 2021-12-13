@@ -1,5 +1,5 @@
-[![Actions Status](https://github.com/activityMonitoring/pyfew/workflows/Pylint/badge.svg)](https://github.com/activityMonitoring/SleepNet/actions)
-[![Actions Status](https://github.com/activityMonitoring/pyfew/workflows/build/badge.svg)](https://github.com/activityMonitoring/SleepNet/actions)
+[![Actions Status](https://github.com/activityMonitoring/pyfew/workflows/Pylint/badge.svg)](https://github.com/activityMonitoring/pyfew/actions)
+[![Actions Status](https://github.com/activityMonitoring/pyfew/workflows/build/badge.svg)](https://github.com/activityMonitoring/pyfew/actions)
 
 # Pyfew
 A simple and light-weight Feature Extractor for Wearable accelerometer data. 
